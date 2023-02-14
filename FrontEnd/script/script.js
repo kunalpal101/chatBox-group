@@ -1,4 +1,9 @@
-const socket = io("http://localhost:3000");
+//const socket = io("http://localhost:3000");
+
+server_url = "https://group-chatbox-kunal.onrender.com/";
+
+//adding server address
+const socket = io(server_url);
 
 const messageContainer = document.getElementById("message-container");
 const messageForm = document.getElementById("send-container");
