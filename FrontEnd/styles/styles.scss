@@ -1,3 +1,20 @@
 .message-container {
   padding: 3rem;
+  overflow-y: auto;
+  height: 93vh;
+}
+
+.lable-class {
+  color: wheat !important;
+}
+
+// For mobile devices
+
+@media screen and (max-width: 480px) {
+  .message-container {
+    padding: 1rem;
+  }
+  .toast {
+    max-width: 70%;
+  }
 }

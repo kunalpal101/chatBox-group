@@ -10,15 +10,45 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <div id="message-container" class="message-container bg-dark"></div>
 
-    <form id="send-container">
-      <input type="tex" id="message-input" />
-      <button type="submit" id="send-button">Send</button>
-    </form>
+    <div class="send-msg fixed-bottom bg-dark" data-bs-theme="dark">
+      <form id="send-container">
+        <!-- <input type="text" id="message-input" /> -->
+
+        <div class="form-floating input-group mb-3">
+          <input
+            type="text"
+            class="form-control bg-dark"
+            id="message-input"
+            placeholder="name@example.com"
+          />
+          <label class="lable-class" for="message-input"
+            >Write Your Message</label
+          >
+          <button
+            class="btn btn-outline-secondary"
+            type="submit"
+            id="send-button"
+          >
+            Send
+          </button>
+        </div>
+        <!-- <button type="submit" id="send-button">Send</button> -->
+      </form>
+    </div>
+
     <br />
     <br />
 
