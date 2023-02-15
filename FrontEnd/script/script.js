@@ -1,6 +1,7 @@
 //const socket = io("http://localhost:3000");
 
-server_url = "https://group-chatbox-kunal.onrender.com/";
+//server_url = "https://group-chatbox-kunal.onrender.com/";
+server_url = "http://localhost:3000/";
 
 //adding server address
 const socket = io(server_url);
@@ -38,7 +39,7 @@ function appendMessage(message) {
   let user_message = message.user_message;
   const messageElement = document.createElement("div");
 
-  console.log(message.new_user);
+  //console.log(message.new_user);
   if (message.new_user == "You") {
     messageElement.className = "bd-example bg-dark align-items-center d-flex";
   } else {

@@ -1,21 +1,30 @@
 const express = require("express");
+const app = express();
+
 //we need to require http, cause socket and express otherwise can't be made listened to the same PORT
 const http = require("http");
-const socketIO = require("socket.io");
-
-const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+//const io = socketIO(server);
 
-// enable CORS without external module
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+//These options are needed for socket.io, cause CORS is denied by default
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: "*",
+    credentials: true,
+  },
 });
+
+// // enable CORS without external module
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 const users = {};
 
