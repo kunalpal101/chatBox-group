@@ -67,4 +67,5 @@ function appendMessage(message) {
     "</div>";
 
   messageContainer.append(messageElement);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }

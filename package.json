@@ -4,7 +4,7 @@
   "description": "A chatbox application made from node.js and socket.io",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "author": "Kunal Pal",
   "license": "ISC",
