@@ -1,7 +1,9 @@
 //const socket = io("http://localhost:3000");
 
 //server_url = "https://group-chatbox-kunal.onrender.com/";
-server_url = window.location.href.replace(/\/$/, '');
+
+//to get the current URL and remove the trailing '/'
+server_url = window.location.href.replace(/\/$/, "");
 
 //adding server address
 const socket = io(server_url);
@@ -10,9 +12,16 @@ const messageContainer = document.getElementById("message-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
 
-const u_name = prompt("What is your name?") || "New User";
-appendMessage({ new_user: "You", user_message: "Joined" });
-socket.emit("new-user", u_name);
+// const u_name = prompt("What is your name?") || "New User";
+let u_name;
+swal("Write something here:", {
+  content: "input",
+}).then((value) => {
+  u_name = value || "New User";
+
+  appendMessage({ new_user: "You", user_message: "Joined" });
+  socket.emit("new-user", u_name);
+});
 
 socket.on("chat-message", (data) => {
   appendMessage({ new_user: data.name, user_message: data.message });
@@ -49,10 +58,12 @@ function appendMessage(message) {
     messageElement.className =
       "bd-example bg-dark align-items-center d-flex justify-content-end";
   }
-  
+
   messageElement.innerHTML =
     "<div class='toast fade show my-3'>" +
-    "<div class='toast-header "+bg+"'>" +    
+    "<div class='toast-header " +
+    bg +
+    "'>" +
     "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='me-2 bi bi-person-circle' viewBox='0 0 16 16'>" +
     "<path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z'/>" +
     "<path fill-rule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z'/>" +
@@ -66,7 +77,6 @@ function appendMessage(message) {
     "</div>" +
     "</div>";
 
-  
   messageContainer.append(messageElement);
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
