@@ -14,7 +14,7 @@ const messageInput = document.getElementById("message-input");
 
 // const u_name = prompt("What is your name?") || "New User";
 let u_name;
-swal("Write something here:", {
+swal("Enter you name, please:", {
   content: "input",
 }).then((value) => {
   u_name = value || "New User";
